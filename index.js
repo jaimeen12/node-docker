@@ -19,7 +19,7 @@ app.use(express.json())
 // Define a route handler for GET /
 app.get('/', (req, res) => {
     const headers = req.headers
-  res.status(200).send(headers);
+  res.status(200).send("hello world");
 });
 
 app.use("/posts",postRouter)
