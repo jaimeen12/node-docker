@@ -3,8 +3,8 @@ import puppeteer from 'puppeteer';
 export async function getPortswigger (email, password)  {
     // Launch the browser and open a new blank page
     const browser = await puppeteer.launch({
-         headless: true, 
-         ignoreDefaultArgs: ['--disable-extensions']
+        executablePath: '/usr/bin/chromium-browser',
+        ignoreDefaultArgs: ['--disable-extensions']
     });
     const page = await browser.newPage();
     
