@@ -8,6 +8,7 @@
     "dev": "nodemon index.js"
   },
   "keywords": [],
+  "postinstall": "npx puppeteer install",
   "author": "",
   "license": "ISC",
   "description": "",
