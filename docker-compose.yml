@@ -1,0 +1,28 @@
+version: "3"
+services:
+  node-app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+    environment:
+      - PORT=3000
+      - MONGO_USER=jaimeen
+      - MONGO_PASSWORD=mypassword
+    env_file:
+      - ./.env
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=jaimeen
+      - MONGO_INITDB_ROOT_PASSWORD=mypassword
+      
+    volumes:
+      - mongodb-data:/data/db
+
+volumes:
+  mongodb-data:
