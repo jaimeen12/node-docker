@@ -4,10 +4,7 @@ export async function getPortswigger (email, password)  {
     // Launch the browser and open a new blank page
     const browser = await puppeteer.launch({
          headless: true, 
-         defaultViewport: {
-            width: 1100,
-            height: 1000
-        }
+         executablePath: '/usr/bin/chromium-browser'
     });
     const page = await browser.newPage();
     
