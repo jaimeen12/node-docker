@@ -1,30 +1,26 @@
-const express = require('express');
+import express from 'express';
+import expressEjsLayouts from 'express-ejs-layouts';
+
+import router from './routes/index.js'
+
+import dotenv from 'dotenv';
+dotenv.config()
+
 const app = express();
-const port = 3000;
-const mongoose = require('mongoose');
-const {MONGO_USER, MONGO_PASSWORD, MONGO_PORT,MONGO_IP}=require('./config/config');
 
-const postRouter = require('./routes/postRouter');
+app.use(express.static('public'))
 
-const mongoUrl = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`
-// Connect to MongoDB
-mongoose.connect(mongoUrl)
- .then(() => console.log('Connected to MongoDB'))
- .catch(error => console.error('Error connecting to MongoDB', error));
+//EJS
+app.use(expressEjsLayouts);
+app.set('view engine', 'ejs');
+
+//BodyParser
+app.use(express.urlencoded({ extended: false }));
 
 
-// Define a simple model for a blog post
-app.use(express.json())
+//Routes
+app.use('/', router)
 
-// Define a route handler for GET /
-app.get('/', (req, res) => {
-    const headers = req.headers
-  res.status(200).send("hello world");
-});
+const PORT = process.env.PORT || 5000;
 
-app.use("/posts",postRouter)
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+app.listen(PORT, console.log(`Server running on  ${PORT}`));

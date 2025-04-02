@@ -1,0 +1,57 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<div class="row mb-5">
+    <div class="col-md-8 col-xl-6 text-center mx-auto">
+        <h2>Portswigger</h2>
+        <p class="w-lg-50">Labs</p>
+    </div>
+</div>
+
+<a href="/" class="btn btn-secondary">Back</a>
+
+<div class="d-grid gap-2">
+  </div>
+
+  <br>
+  <h2>Completed Labs</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col">Lab</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% solved.forEach(note => { %>
+      <tr class="table-light">
+        <td><%= note.title %></td>
+        <td><%= note.status %></td>
+
+        </tr>          
+      <% }); %>
+    </tbody>
+  </table>
+  <br>
+  <h2>Pending Labs</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col">Lab</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% unsolved.forEach(note => { %>
+      <tr class="table-light">
+        <td><%= note.title %></td>
+        <td><%= note.status %></td>
+
+        </tr>          
+      <% }); %>
+    </tbody>
+  </table>
